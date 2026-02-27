@@ -199,8 +199,10 @@ export default function GameManager() {
                 <button
                     className={`flag-toggle ${isFlagMode ? 'active' : ''}`}
                     onClick={() => setIsFlagMode(!isFlagMode)}
+                    title={isFlagMode ? "Flag Mode On" : "Reveal Mode On"}
+                    aria-label="Toggle flag mode"
                 >
-                    {isFlagMode ? '🚩 Flag Mode: ON' : '🖱️ Reveal Mode'}
+                    🚩
                 </button>
             </div>
 

@@ -418,28 +418,29 @@ footer {
 .flag-toggle {
   background: rgba(139, 115, 85, 0.05);
   border: 1px solid var(--panel-border);
-  color: var(--text-muted);
-  padding: 0.75rem 1.5rem;
+  padding: 0.5rem;
   border-radius: 12px;
   cursor: pointer;
-  font-family: 'Outfit', sans-serif;
-  font-size: 1rem;
-  font-weight: 600;
+  font-size: 1.5rem;
   transition: all 0.2s;
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  justify-content: center;
+  width: 3.5rem;
+  height: 3.5rem;
+  filter: grayscale(100%) opacity(0.5);
 }
 
 .flag-toggle:hover {
   background: rgba(139, 115, 85, 0.1);
+  filter: grayscale(100%) opacity(0.8);
 }
 
 .flag-toggle.active {
   background: var(--secondary);
-  color: var(--text-main);
   border-color: var(--secondary);
   box-shadow: 0 4px 12px rgba(224, 178, 184, 0.3);
+  filter: grayscale(0%) opacity(1);
 }
 
 /* Responsive constraints */
