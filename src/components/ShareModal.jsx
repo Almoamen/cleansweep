@@ -14,7 +14,7 @@ export default function ShareModal({ status, actionLog, dateStr, moves, onClose 
         }
         text += chunkedLog.join('\n');
 
-        text += `\n\nPlay at: https://yoursite.com`; // Placeholder URL
+        text += `\n\nPlay at: https://cleansweep-alpha.vercel.app/`; // Live Deployment URL
         return text;
     };
 

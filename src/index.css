@@ -407,23 +407,39 @@ footer {
   opacity: 0.6;
 }
 
-/* Temporary Reset Button */
-.reset-btn {
+/* Mobile Controls */
+.controls {
   margin-top: 1rem;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.flag-toggle {
   background: rgba(139, 115, 85, 0.05);
   border: 1px solid var(--panel-border);
   color: var(--text-muted);
-  padding: 0.5rem 1rem;
-  border-radius: 8px;
+  padding: 0.75rem 1.5rem;
+  border-radius: 12px;
   cursor: pointer;
   font-family: 'Outfit', sans-serif;
-  font-size: 0.9rem;
+  font-size: 1rem;
+  font-weight: 600;
   transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
 }
 
-.reset-btn:hover {
+.flag-toggle:hover {
   background: rgba(139, 115, 85, 0.1);
+}
+
+.flag-toggle.active {
+  background: var(--secondary);
   color: var(--text-main);
+  border-color: var(--secondary);
+  box-shadow: 0 4px 12px rgba(224, 178, 184, 0.3);
 }
 
 /* Responsive constraints */

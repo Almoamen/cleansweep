@@ -12,6 +12,7 @@ export default function GameManager() {
     const [moves, setMoves] = useState(0);
     const [actionLog, setActionLog] = useState([]);
     const [isModalOpen, setIsModalOpen] = useState(false);
+    const [isFlagMode, setIsFlagMode] = useState(false);
 
     // Initialize game on mount or new day
     useEffect(() => {
@@ -103,7 +104,13 @@ export default function GameManager() {
     };
 
     const handleCellClick = (r, c) => {
-        if (status !== 'playing' || board[r][c].isRevealed || board[r][c].isFlagged) return;
+        if (status !== 'playing' || board[r][c].isRevealed) return;
+
+        // If in flag mode, or the cell is already flagged, route to right-click logic
+        if (isFlagMode || board[r][c].isFlagged) {
+            handleCellRightClick(r, c);
+            return;
+        }
 
         setMoves(m => m + 1);
         const newBoard = [...board];
@@ -188,6 +195,15 @@ export default function GameManager() {
                 />
             </div>
 
+            <div className="controls">
+                <button
+                    className={`flag-toggle ${isFlagMode ? 'active' : ''}`}
+                    onClick={() => setIsFlagMode(!isFlagMode)}
+                >
+                    {isFlagMode ? '🚩 Flag Mode: ON' : '🖱️ Reveal Mode'}
+                </button>
+            </div>
+
             {isModalOpen && (status === 'won' || status === 'lost') && (
                 <ShareModal
                     status={status}
@@ -199,15 +215,10 @@ export default function GameManager() {
             )}
 
             {!isModalOpen && (status === 'won' || status === 'lost') && (
-                <button className="reset-btn" onClick={() => setIsModalOpen(true)} style={{ marginTop: '0', background: 'var(--primary)', color: 'white' }}>
+                <button className="secondary-btn" onClick={() => setIsModalOpen(true)} style={{ marginTop: '1rem' }}>
                     Show Results
                 </button>
             )}
-
-            {/* Temporary testing reset button */}
-            <button className="reset-btn" onClick={handleReset}>
-                Reset For Testing
-            </button>
         </div>
     );
 }
